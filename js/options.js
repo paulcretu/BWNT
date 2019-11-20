@@ -10,7 +10,8 @@
         // Note: 'Or' can be done against false values because they are strings
         localStorage.format = localStorage.format || 'false';
         localStorage.show_date = localStorage.show_date || 'true';
-        localStorage.cycle = localStorage.cycle || 'true';
+        localStorage.cycle_daytime = localStorage.cycle_daytime || 'true';
+        localStorage.cycle_system = localStorage.cycle_system || 'false';
         localStorage.theme = localStorage.theme || 'theme-light';
 
         if (typeof localStorage.use_bg_image === 'undefined') {
@@ -26,7 +27,8 @@
         var format = document.getElementById('format'),
             show_date = document.getElementById('showDate'),
             theme = document.getElementById('theme'),
-            cycle = document.getElementById('cycle'),
+            cycle_daytime = document.getElementById('cycle-daytime'),
+            cycle_system = document.getElementById('cycle-system')
             use_background = document.getElementById('use-bg-img'),
             bg_picker = document.getElementById('bg-img-picker');
 
@@ -42,15 +44,26 @@
             clock.load_options();
         });
 
-        cycle.checked = localStorage.cycle === 'true';
-        cycle.addEventListener('change', function() {
-            localStorage.cycle = cycle.checked;
-            theme.disabled = cycle.checked;
+        cycle_daytime.checked = localStorage.cycle_daytime === 'true';
+        cycle_daytime.disabled = cycle_system.checked
+        cycle_daytime.addEventListener('change', function() {
+            localStorage.cycle_daytime = cycle_daytime.checked;
+            theme.disabled = cycle_daytime.checked;
+            cycle_system.disabled = cycle_daytime.checked;
+            clock.load_options();
+        });
+
+        cycle_system.checked = localStorage.cycle_system === 'true';
+        cycle_system.disabled = cycle_daytime.checked
+        cycle_system.addEventListener('change', function() {
+            localStorage.cycle_system = cycle_system.checked;
+            theme.disabled = cycle_system.checked;
+            cycle_daytime.disabled = cycle_system.checked;
             clock.load_options();
         });
 
         theme.value = localStorage.theme;
-        theme.disabled = cycle.checked;
+        theme.disabled = cycle_daytime.checked || cycle_system.checked;
         theme.addEventListener('change', function() {
             localStorage.theme = theme.children[theme.selectedIndex].value;
             clock.load_options();

@@ -74,6 +74,12 @@ section {
     min-height: 34px;
 }
 
+/* Disabled */
+
+.checkbox input[type="checkbox"]:disabled + label {
+    opacity: 0.5;
+}
+
 /* Border */
 
 .checkbox input[type="checkbox"] + label:before {

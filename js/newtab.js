@@ -103,11 +103,14 @@ var newtab = (function() {
     Clock.prototype.load_options = function() {
         this.format = localStorage.format === 'true'; // Default: false
         this.show_date = localStorage.show_date !== 'false'; // Default: true
-        this.cycle = localStorage.cycle !== 'false'; // Default: true
+        this.cycle_daytime = localStorage.cycle_daytime !== 'false'; // Default: true
+        this.cycle_system = localStorage.cycle_system === 'true'; // Default: false
 
         this.update();
-        if (this.cycle) {
+        if (this.cycle_daytime) {
             this.theme = this.hour >= 6 && this.hour <= 20 ? THEME_DEFAULT : THEME_DEFAULT_DARK;
+        } else if (this.cycle_system) {
+            this.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? THEME_DEFAULT_DARK : THEME_DEFAULT
         } else {
             this.theme = localStorage.theme || THEME_DEFAULT;
         }

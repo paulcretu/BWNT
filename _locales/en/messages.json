@@ -32,6 +32,7 @@
 	"time_pm" : { "message" : "pm"},
 	"show_date": { "message" : "Show date"},
 	"change_theme_daytime": { "message" : "Change theme by time of day"},
+	"change_theme_system": { "message" : "Change theme to match system color scheme"},
 	"use_bg_image": { "message" : "Use a background image"},
 	"select_image": { "message" : "Select an image"},
 	"light": { "message" : "Light"},

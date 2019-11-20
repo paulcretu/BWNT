@@ -13,7 +13,7 @@ Minimalist New Tab page extension. Supports all modern browsers.
 * 12 and 24-hour digital clocks
 * Date (can be hidden or shown)
 * 5 beautiful themes: light, night, dark, material, light blue, light purple
-* Option to rotate between light and night themes based on time of day
+* Option to rotate between light and night themes based on time of day or based on OS/browser color scheme (dark mode)
 * Custom background pictures _(Image sizes >1MB not recommended)_
 * Available in some languages aside from English
 
